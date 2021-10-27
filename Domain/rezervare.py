@@ -1,6 +1,6 @@
 def creeaza_rezervare(id, nume,clasa,pret,checkin):
     '''
-    creeaza un dictionar pentru rezervarea de avion
+    creeaza un o lista pentru rezervarea de avion
     :param id: string
     :param nume: string
     :param clasa: string
@@ -8,42 +8,38 @@ def creeaza_rezervare(id, nume,clasa,pret,checkin):
     :param checkin: string
     :return:
     '''
+    lista_rez=[id, nume, clasa, pret, checkin]
+    return lista_rez
 
-    return {
-        "id": id,
-        "nume": nume,
-        "clasa": clasa,
-        "pret": pret,
-        "checkin": checkin
-    }
 
-def get_id(rezervare):
+
+def get_id(lista_rez):
     '''
     da id-ul unei rezervari
-    :param rezervare: dictionar ce contine o rezervare
+    :param rezervare: lista ce contine o rezervare
     :return: id-ul rezervarii
     '''
-    return rezervare["id"]
+    return lista_rez[0]
 
-def get_nume(rezervare):
-    return rezervare["nume"]
+def get_nume(lista_rez):
+    return lista_rez[1]
 
-def get_clasa(rezervare):
-    return rezervare["clasa"]
+def get_clasa(lista_rez):
+    return lista_rez[2]
 
-def get_pret(rezervare):
-    return rezervare["pret"]
+def get_pret(lista_rez):
+    return lista_rez[3]
 
-def get_checkin(rezervare):
-    return rezervare["checkin"]
+def get_checkin(lista_rez):
+    return lista_rez[4]
 
-def to_string(rezervare):
+def to_string(lista_rez):
     return "Id: {}, Nume: {}, Clasa: {}, Pret: {}, Checkin: {}".format(
-        get_id(rezervare),
-        get_nume(rezervare),
-        get_clasa(rezervare),
-        get_pret(rezervare),
-        get_checkin(rezervare)
+        get_id(lista_rez),
+        get_nume(lista_rez),
+        get_clasa(lista_rez),
+        get_pret(lista_rez),
+        get_checkin(lista_rez)
     )
 
 
