@@ -1,5 +1,4 @@
 from Domain.rezervare import get_nume, creeaza_rezervare, get_id, get_clasa, get_pret, get_checkin
-from Logic.CRUD import adauga_rezervare
 
 
 def trecere_rezervare_upperclass(sub_nume, noua_clasa , lista):
@@ -79,8 +78,32 @@ def ordonare_descrescatoare_pret(lista):
     lpreturi.sort(reverse=True)
     return lpreturi
     '''
-    print(sorted(lista, key=lambda rezervare: get_pret(rezervare), reverse=True))
     return sorted(lista, key=lambda rezervare:get_pret(rezervare), reverse=True)
+
+def suma_preturi_nume(lista):
+    '''
+    Creeaza un dictionar ce contine numele si sumele preturilor pentru fiecare nume diferit din lista de rezervari
+    :param lista:
+    :return:
+    '''
+    dictionar={}
+    for rezervare in lista:
+        nume=get_nume(rezervare)
+        pret=get_pret(rezervare)
+        if nume in dictionar:
+            dictionar[nume] = dictionar[nume] + pret
+        else:
+            dictionar[nume] = pret
+    return dictionar
+
+
+
+
+
+
+
+
+
 
 
 
