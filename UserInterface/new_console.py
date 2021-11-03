@@ -33,14 +33,14 @@ def run_menu_2(lista):
                         print("eroare {}".format(ve))
                         return lista
                 elif comanda_split[0] == "delete":
-                    lista=sterge_rezervare(comanda[1], lista)
+                    lista=sterge_rezervare(comanda_split[1], lista)
                 elif comanda_split[0] == "update":
                     try:
                         lista=modifica_rezervare(comanda_split[1], comanda_split[2], comanda_split[3], comanda_split[4], comanda_split[5], lista)
                     except ValueError as ve:
                         print("eroare {}".format(ve))
                         return lista
-                elif comanda[0] == "showall":
+                elif comanda_split[0] == "showall":
                     ui_show_all(lista)
-                elif comanda[0] == "Help":
+                elif comanda_split[0] == "Help":
                     help()
