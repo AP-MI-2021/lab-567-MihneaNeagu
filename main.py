@@ -6,9 +6,8 @@ from UserInterface.new_console import run_menu_2
 
 def main():
 
-    lista=[]
+    lista = []
     run_menu(lista)
-    run_menu_2(lista)
     run_all_tests()
 main()
 '''

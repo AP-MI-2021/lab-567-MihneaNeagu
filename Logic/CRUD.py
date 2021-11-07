@@ -44,7 +44,7 @@ def sterge_rezervare(id,lista):
             raise ValueError("Id-ul nu exista")
     except TypeError as te:
         print("Error {}".format(te))
-        return [rezervare for rezervare in lista if get_id(rezervare)!=id]
+        return [rezervare for rezervare in lista if get_id(rezervare) != id]
 
 def modifica_rezervare(id, nume, clasa, pret, checkin, lista):
     '''
