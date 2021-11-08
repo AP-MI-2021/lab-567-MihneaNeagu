@@ -64,5 +64,85 @@ def test_suma_preturi_nume():
     assert rezultat["Neymar"] == 800
     assert rezultat["Haaland"] == 3000
 
+def test_undo_redo():
+    lista = []
+    undo_list = []
+    redo_list = []
+    lista = adauga_rezervare("1", "Obama", "business", 900, "da", lista)
+    undo_list.append(lista)
+    lista = adauga_rezervare("2", "Trump", "economy", 1500, "nu", lista)
+    undo_list.append(lista)
+    lista = adauga_rezervare("3", "Messi", "economy", 25, "nu ", lista)
+    undo_list.append(lista)
+    assert len(undo_list) == 3
+    undo_list.pop()
+    redo_list.append(lista)
+    assert len(undo_list) == 2
+    undo_list.pop()
+    redo_list.append(lista)
+    assert len(undo_list) == 1
+    undo_list.pop()
+    redo_list.append(lista)
+    assert len(undo_list) == 0
+    assert len(redo_list) == 3
+    undo_list = []
+    redo_list = []
+    lista = adauga_rezervare("1", "Obama", "business", 900, "da", lista)
+    undo_list.append(lista)
+    redo_list.clear()
+    lista = adauga_rezervare("2", "Trump", "economy", 1500, "nu", lista)
+    undo_list.append(lista)
+    redo_list.clear()
+    lista = adauga_rezervare("3", "Messi", "economy", 25, "nu ", lista)
+    undo_list.append(lista)
+    redo_list.clear()
+    assert len(redo_list) == 0
+    assert len(undo_list) == 3
+    undo_list.pop()
+    redo_list.append(lista)
+    assert len(redo_list) == 1
+    assert len(undo_list) == 2
+    undo_list.pop()
+    redo_list.append(lista)
+    assert len(redo_list) == 2
+    assert len(undo_list) == 1
+    redo_list.pop()
+    undo_list.append(lista)
+    assert len(redo_list) == 1
+    assert len(undo_list) == 2
+    redo_list.pop()
+    undo_list.append(lista)
+    assert len(redo_list) == 0
+    assert len(undo_list) == 3
+    undo_list.pop()
+    redo_list.append(lista)
+    assert len(redo_list) == 1
+    assert len(undo_list) == 2
+    lista = adauga_rezervare("4", "Neymar", "business", 7800, "da", lista)
+    undo_list.append(lista)
+    redo_list.clear()
+    assert len(redo_list) == 0
+    assert len(undo_list) == 3
+    undo_list.pop()
+    redo_list.append(lista)
+    assert len(undo_list) == 2
+    assert len(redo_list) == 1
+    undo_list.pop()
+    redo_list.append(lista)
+    assert len(undo_list) == 1
+    assert len(redo_list) == 2
+    redo_list.pop()
+    undo_list.append(lista)
+    assert len(undo_list) == 2
+    assert len(redo_list) == 1
+    redo_list.pop()
+    undo_list.append(lista)
+    assert len(undo_list) == 3
+    assert len(redo_list) == 0
+    if len(redo_list) > 0:
+        redo_list.pop()
+    assert len(redo_list) == 0
+
+
 
 

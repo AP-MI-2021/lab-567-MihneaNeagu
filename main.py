@@ -1,7 +1,6 @@
-from Logic.CRUD import adauga_rezervare
 from Tests.test_all import run_all_tests
 from UserInterface.console import run_menu
-from UserInterface.new_console import run_menu_2
+
 
 
 def main():
@@ -10,6 +9,7 @@ def main():
     run_menu(lista)
     run_all_tests()
 main()
+
 '''
 Documentatie organizatorica(platforma de organizare a proiectului)
 link:
