@@ -62,22 +62,19 @@ def ui_ieftinire_procentaj_checkin(l, undo_list, redo_list):
     except ValueError as ve:
         print("Error: {}".format(ve))
         return l
-def ui_pret_maxim_per_clasa(l, undo_list, redo_list):
-    clasa_data=input("Dati clasa pentru care doriti sa stiti pretul maxim al rezervarii: ")
-    rezultat= pret_maxim_per_clasa(clasa_data, l)
-    undo_list.append(l)
-    redo_list.clear()
-    return rezultat
-def ui_ordonare_descrescatoare(l, undo_list, redo_list):
-    rezultat= ordonare_descrescatoare_pret(l)
-    undo_list.append(l)
-    redo_list.clear()
-    return rezultat
-def ui_suma_preturi_nume(l, undo_list, redo_list):
-    rezultat= suma_preturi_nume(l)
-    undo_list.append(l)
-    redo_list.clear()
-    return rezultat
+def ui_pret_maxim_per_clasa(l):
+    try:
+        clasa_data = input("Dati clasa pentru care doriti sa stiti pretul maxim al rezervarii: ")
+        ui_show_all(pret_maxim_per_clasa(clasa_data, l))
+    except ValueError as ve:
+        print("Eroare: {}".format(ve))
+        return l
+def ui_ordonare_descrescatoare(l):
+    ui_show_all(ordonare_descrescatoare_pret(l))
+def ui_suma_preturi_nume(l):
+    rezultat = suma_preturi_nume(l)
+    for nume in rezultat:
+        print("Numele {} are suma preturilor {}".format(nume, rezultat[nume]))
 
 
 
@@ -115,11 +112,11 @@ def run_menu(l):
         elif optiune == "5":
             l = ui_ieftinire_procentaj_checkin(l, undo_list, redo_list)
         elif optiune == "6":
-            l = ui_pret_maxim_per_clasa(l, undo_list, redo_list)
+            ui_pret_maxim_per_clasa(l)
         elif optiune == "7":
-            l = ui_ordonare_descrescatoare(l, undo_list, redo_list)
+            ui_ordonare_descrescatoare(l)
         elif optiune == "8":
-            l = ui_suma_preturi_nume(l, undo_list, redo_list)
+            ui_suma_preturi_nume(l)
         elif optiune == "u":
             if len(undo_list) > 0:
                 redo_list.append(l)

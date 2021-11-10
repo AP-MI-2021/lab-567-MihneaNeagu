@@ -6,7 +6,6 @@ from Tests.tests_functionalitati import test_trecere_rezervare_upperclass, test_
 
 def run_all_tests():
     test_rezervare()
-
     test_sterge_rezervare()
     test_modifica_rezervare()
     test_trecere_rezervare_upperclass()

@@ -26,8 +26,6 @@ def get_by_id(id,lista):
     '''
 
     for rezervare in lista:
-        if get_pret(rezervare)<0:
-            raise ValueError("Pretul nu poate fi mai mic decat 0")
         if get_id(rezervare) == id:
             return rezervare
     return None
